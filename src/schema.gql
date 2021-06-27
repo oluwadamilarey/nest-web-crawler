@@ -2,12 +2,46 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Owner {
+  id: Int!
+  name: String!
+  pets: [Pet!]
+}
+
 type Pet {
   id: Int!
   name: String!
   type: String
+  ownerId: Int!
 }
 
 type Query {
+  getPet(id: Int!): Pet!
+  getPage: String!
   pets: [Pet!]!
+  owners: [Owner!]!
+  owner(id: Int!): Owner!
+}
+
+type Mutation {
+  createPet(createPetInput: CreatePetInput!): Pet!
+  createOwner(createOwnerInput: CreateOwnerInput!): Owner!
+  updateOwner(updateOwnerInput: UpdateOwnerInput!): Owner!
+  removeOwner(id: Int!): Owner!
+}
+
+input CreatePetInput {
+  name: String!
+  type: String
+}
+
+input CreateOwnerInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateOwnerInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
 }
